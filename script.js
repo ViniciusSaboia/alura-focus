@@ -114,9 +114,15 @@ function zerar() {
 }
 
 function mostrarTempo() {
-    const tempo = new Date(tempoDecorridoEmSegundos * 1000)
-    const tempoFormatado = tempo.toLocaleDateString('pt-br', {minute: '2-digit', second: '2-digit'})
-    tempoNaTela.innerHTML = `${tempoFormatado}`
+    const tempo = new Date(tempoDecorridoEmSegundos * 1000);
+    const tempoFormatado = tempo.toLocaleTimeString('pt-BR', {
+        hour: '2-digit', 
+        minute: '2-digit', 
+        second: '2-digit',
+        hour12: false // Usa o formato de 24 horas
+    }).substring(3); // Remove a hora, deixando apenas minutos e segundos
+
+    tempoNaTela.innerHTML = `${tempoFormatado}`;
 }
 
 mostrarTempo();
